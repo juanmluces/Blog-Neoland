@@ -1,1 +1,25 @@
-<p>blog works!</p>
+<div class="container-fluid navBar">
+  <nav class="container">
+    <ul class="d-flex justify-content-between">
+      <li class="text-light p-2"> <a class="btn btn-info" (click)="filtrarCategoria(false)">Todo</a>
+      </li>
+      <li class="text-light p-2" *ngFor="let categoria of arrayCategorias"> <a class="btn btn-info"
+          (click)="filtrarCategoria(categoria)">{{categoria}}</a>
+      </li>
+    </ul>
+    <div class="blogPosts d-flex flex-wrap">
+      <div class="post text-light" *ngFor="let post of arrayMostrado">
+        <div class="background">
+
+          <h3 class="text-center">{{post.titulo}}</h3>
+          <div class="imgContainer">
+            <img src="{{post.imagen}}">
+          </div>
+          <h4>{{post.autor}}</h4>
+          <p>{{post.fecha}}</p>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+</div>

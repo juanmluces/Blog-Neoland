@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../interfaces/post';
-import { DatosPostsService } from '../services/datos-posts.service';
+import { Categoria, DatosPostsService } from '../services/datos-posts.service';
+
 
 @Component({
   selector: 'app-blog',
@@ -10,22 +11,34 @@ import { DatosPostsService } from '../services/datos-posts.service';
 export class BlogComponent implements OnInit {
 
   arrayMostrado: Post[];
+  arrayCategorias: Categoria[]
 
-  constructor(private datosPosts: DatosPostsService) { }
+  constructor(private datosPosts: DatosPostsService) {
+    this.arrayCategorias = [
+      Categoria.deporte,
+      Categoria.hobbies,
+      Categoria.informatica,
+      Categoria.salud
+    ]
+  }
 
   ngOnInit(): void {
 
     this.datosPosts.getAllPosts()
       .then(response => {
         this.arrayMostrado = response;
-        console.log(this.arrayMostrado);
+
 
       })
       .catch(error => console.log(error));
   }
 
   async filtrarCategoria(pCategoria) {
-    this.arrayMostrado = await this.datosPosts.getPostByCategory(pCategoria)
+    if (pCategoria) {
+      this.arrayMostrado = await this.datosPosts.getPostByCategory(pCategoria)
+    } else {
+      this.arrayMostrado = await this.datosPosts.getAllPosts();
+    }
   }
 
 }
