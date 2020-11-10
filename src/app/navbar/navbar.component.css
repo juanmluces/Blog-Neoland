@@ -1,0 +1,14 @@
+img{
+  width: 70px;
+  height: 100%;
+  display: block;
+}
+
+li{
+  font-size: 1.5rem;
+  padding: 0 1em;
+}
+
+.bg-dark {
+	background-color: #222133 !important;
+}
