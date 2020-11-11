@@ -1,8 +1,13 @@
 div.navBar {
   background-color: #222133;
-  padding: 1em;
+  padding: 2em;
  
 }
+
+div.blogPosts{
+  background-color: #222133;
+}
+
 dl, ol, ul {
   margin-top: auto; 
   margin-bottom: 0;
@@ -19,7 +24,7 @@ img{
   background-color: #1CC3BC;
   padding: 0.5em;
   border-radius: 10px;
-  margin: 5% 1.5%;
+  margin: 1em 1.5%;
   width: 30%;
 
 }

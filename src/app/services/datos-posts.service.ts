@@ -26,31 +26,35 @@ export class DatosPostsService {
         autor: 'Juan Miguel Luces',
         imagen: 'https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
         fecha: '10/11/2020',
-        categoria: Categoria.informatica
+        categoria: Categoria.informatica,
+        id: 1
       },
       {
-        titulo: 'Prueba Post 1 DEPORTE',
+        titulo: 'Prueba Post 2 DEPORTE',
         texto: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, neque ab saepe numquam illum minima laudantium dignissimos ipsam vitae, commodi odit culpa corrupti. Nam ab voluptatem aliquid aliquam a voluptas sint reiciendis, laborum quos doloremque earum repudiandae velit? Nemo, totam!',
         autor: 'Juan Miguel Luces',
         imagen: 'https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
         fecha: '10/11/2020',
-        categoria: Categoria.deporte
+        categoria: Categoria.deporte,
+        id: 2
       },
       {
-        titulo: 'Prueba Post 1 HOBBIES',
+        titulo: 'Prueba Post 3 HOBBIES',
         texto: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, neque ab saepe numquam illum minima laudantium dignissimos ipsam vitae, commodi odit culpa corrupti. Nam ab voluptatem aliquid aliquam a voluptas sint reiciendis, laborum quos doloremque earum repudiandae velit? Nemo, totam!',
         autor: 'Juan Miguel Luces',
         imagen: 'https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
         fecha: '10/11/2020',
-        categoria: Categoria.hobbies
+        categoria: Categoria.hobbies,
+        id: 3
       },
       {
-        titulo: 'Prueba Post 1 SALUD',
+        titulo: 'Prueba Post 4 SALUD',
         texto: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, neque ab saepe numquam illum minima laudantium dignissimos ipsam vitae, commodi odit culpa corrupti. Nam ab voluptatem aliquid aliquam a voluptas sint reiciendis, laborum quos doloremque earum repudiandae velit? Nemo, totam!',
         autor: 'Juan Miguel Luces',
         imagen: 'https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
         fecha: '10/11/2020',
-        categoria: Categoria.salud
+        categoria: Categoria.salud,
+        id: 4
       },
     ];
 
@@ -77,7 +81,13 @@ export class DatosPostsService {
       resolve(filteredList);
       reject('Ha ocuriido un error');
     })
+  }
 
+  getPostById(pId: number): Promise<Post> {
+    return new Promise((resolve, reject) => {
+      resolve(this.arrayPosts.find(post => post.id === pId));
+      reject('Ha ocurrido un error');
+    })
   }
 
 }

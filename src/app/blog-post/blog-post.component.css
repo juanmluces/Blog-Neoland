@@ -1,0 +1,10 @@
+img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+div.post{
+  border: 0.5em solid #1CC3BC;
+  border-radius:  15px;
+}

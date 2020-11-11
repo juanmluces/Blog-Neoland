@@ -12,8 +12,10 @@ export class BlogComponent implements OnInit {
 
   arrayMostrado: Post[];
   arrayCategorias: Categoria[]
+  categoriaMostrada: Categoria;
 
   constructor(private datosPosts: DatosPostsService) {
+    this.categoriaMostrada = null;
     this.arrayCategorias = [
       Categoria.deporte,
       Categoria.hobbies,
@@ -36,8 +38,10 @@ export class BlogComponent implements OnInit {
   async filtrarCategoria(pCategoria) {
     if (pCategoria) {
       this.arrayMostrado = await this.datosPosts.getPostByCategory(pCategoria)
+      this.categoriaMostrada = pCategoria;
     } else {
       this.arrayMostrado = await this.datosPosts.getAllPosts();
+      this.categoriaMostrada = null;
     }
   }
 
