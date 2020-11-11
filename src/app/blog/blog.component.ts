@@ -14,19 +14,15 @@ export class BlogComponent implements OnInit {
   arrayCategorias: Categoria[]
   categoriaMostrada: Categoria;
 
-  constructor(private datosPosts: DatosPostsService) {
+  constructor(private datosPostsService: DatosPostsService) {
     this.categoriaMostrada = null;
-    this.arrayCategorias = [
-      Categoria.deporte,
-      Categoria.hobbies,
-      Categoria.informatica,
-      Categoria.salud
-    ]
+
+    this.arrayCategorias = this.datosPostsService.arrayCategorias;
   }
 
   ngOnInit(): void {
 
-    this.datosPosts.getAllPosts()
+    this.datosPostsService.getAllPosts()
       .then(response => {
         this.arrayMostrado = response;
 
@@ -37,10 +33,10 @@ export class BlogComponent implements OnInit {
 
   async filtrarCategoria(pCategoria) {
     if (pCategoria) {
-      this.arrayMostrado = await this.datosPosts.getPostByCategory(pCategoria)
+      this.arrayMostrado = await this.datosPostsService.getPostByCategory(pCategoria)
       this.categoriaMostrada = pCategoria;
     } else {
-      this.arrayMostrado = await this.datosPosts.getAllPosts();
+      this.arrayMostrado = await this.datosPostsService.getAllPosts();
       this.categoriaMostrada = null;
     }
   }

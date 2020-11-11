@@ -1,0 +1,22 @@
+form{
+  max-width: 600px;
+  color: white;
+  margin: auto;
+}
+
+textarea{
+  resize: none;
+}
+
+input.ng-invalid.ng-touched, select.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched{
+  outline: none;
+  border-color: red;
+  box-shadow: 0 0 10px red;
+  background-color: rgb(255, 227, 227);
+}
+
+input.ng-valid.ng-touched{
+  outline: none;
+  border-color: #1AC3C2;
+  box-shadow: 0 0 10px #1AC3C2;
+}

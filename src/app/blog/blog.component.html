@@ -20,7 +20,8 @@
         <img src="{{post.imagen}}">
       </div>
       <h4>{{post.autor}}</h4>
-      <p>{{post.fecha}}</p>
+      <p>Categoría: {{post.categoria}}</p>
+      <p>{{post.fecha | date: 'fullDate'}}</p>
     </div>
 
   </div>

@@ -13,11 +13,19 @@ export enum Categoria {
 })
 export class DatosPostsService {
 
-  arrayPosts: Post[];
+  private arrayPosts: Post[];
+  arrayCategorias: Categoria[]
 
 
 
   constructor() {
+
+    this.arrayCategorias = [
+      Categoria.deporte,
+      Categoria.hobbies,
+      Categoria.informatica,
+      Categoria.salud
+    ]
 
     this.arrayPosts = [
       {
@@ -25,7 +33,7 @@ export class DatosPostsService {
         texto: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, neque ab saepe numquam illum minima laudantium dignissimos ipsam vitae, commodi odit culpa corrupti. Nam ab voluptatem aliquid aliquam a voluptas sint reiciendis, laborum quos doloremque earum repudiandae velit? Nemo, totam!',
         autor: 'Juan Miguel Luces',
         imagen: 'https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-        fecha: '10/11/2020',
+        fecha: new Date,
         categoria: Categoria.informatica,
         id: 1
       },
@@ -34,7 +42,7 @@ export class DatosPostsService {
         texto: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, neque ab saepe numquam illum minima laudantium dignissimos ipsam vitae, commodi odit culpa corrupti. Nam ab voluptatem aliquid aliquam a voluptas sint reiciendis, laborum quos doloremque earum repudiandae velit? Nemo, totam!',
         autor: 'Juan Miguel Luces',
         imagen: 'https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-        fecha: '10/11/2020',
+        fecha: new Date(),
         categoria: Categoria.deporte,
         id: 2
       },
@@ -43,7 +51,7 @@ export class DatosPostsService {
         texto: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, neque ab saepe numquam illum minima laudantium dignissimos ipsam vitae, commodi odit culpa corrupti. Nam ab voluptatem aliquid aliquam a voluptas sint reiciendis, laborum quos doloremque earum repudiandae velit? Nemo, totam!',
         autor: 'Juan Miguel Luces',
         imagen: 'https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-        fecha: '10/11/2020',
+        fecha: new Date(),
         categoria: Categoria.hobbies,
         id: 3
       },
@@ -52,7 +60,7 @@ export class DatosPostsService {
         texto: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, neque ab saepe numquam illum minima laudantium dignissimos ipsam vitae, commodi odit culpa corrupti. Nam ab voluptatem aliquid aliquam a voluptas sint reiciendis, laborum quos doloremque earum repudiandae velit? Nemo, totam!',
         autor: 'Juan Miguel Luces',
         imagen: 'https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-        fecha: '10/11/2020',
+        fecha: new Date(),
         categoria: Categoria.salud,
         id: 4
       },
@@ -87,6 +95,13 @@ export class DatosPostsService {
     return new Promise((resolve, reject) => {
       resolve(this.arrayPosts.find(post => post.id === pId));
       reject('Ha ocurrido un error');
+    })
+  }
+
+  getNewPostId(): Promise<number> {
+    return new Promise((resolve, reject) => {
+      const id = (this.arrayPosts.length + 1);
+      resolve(id);
     })
   }
 
