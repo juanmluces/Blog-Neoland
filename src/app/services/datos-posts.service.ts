@@ -27,8 +27,56 @@ export class DatosPostsService {
       Categoria.salud
     ]
 
-    this.arrayPosts = [
-      {
+    if (localStorage.getItem('posts')) {
+      this.arrayPosts = JSON.parse(localStorage.getItem('posts'))
+    } else {
+      this.arrayPosts = [];
+    }
+
+  }
+
+  getAllPosts(): Promise<Post[]> {
+    return new Promise((resolve, reject) => {
+      resolve(this.arrayPosts);
+      reject('ha ocurrido un error');
+    })
+  }
+
+  addNewPost(newPost: Post): Promise<string> {
+    return new Promise((resolve, reject) => {
+      this.arrayPosts.push(newPost);
+      localStorage.setItem('posts', JSON.stringify(this.arrayPosts))
+      resolve(`El Post ${newPost.titulo} se ha agregado Correctamente!`);
+      reject('Ha ocurrido un error');
+    });
+  }
+
+  getPostByCategory(pCategoria: string): Promise<Post[]> {
+    return new Promise((resolve, reject) => {
+      const filteredList = this.arrayPosts.filter(post => post.categoria === pCategoria);
+      resolve(filteredList);
+      reject('Ha ocuriido un error');
+    })
+  }
+
+  getPostById(pId: number): Promise<Post> {
+    return new Promise((resolve, reject) => {
+      resolve(this.arrayPosts.find(post => post.id === pId));
+      reject('Ha ocurrido un error');
+    })
+  }
+
+  getNewPostId(): Promise<number> {
+    return new Promise((resolve, reject) => {
+      const id = (this.arrayPosts.length + 1);
+      resolve(id);
+    })
+  }
+
+}
+
+
+/* {
         titulo: 'Prueba Post 1 INFORMATICA',
         texto: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, neque ab saepe numquam illum minima laudantium dignissimos ipsam vitae, commodi odit culpa corrupti. Nam ab voluptatem aliquid aliquam a voluptas sint reiciendis, laborum quos doloremque earum repudiandae velit? Nemo, totam!',
         autor: 'Juan Miguel Luces',
@@ -63,46 +111,4 @@ export class DatosPostsService {
         fecha: new Date(),
         categoria: Categoria.salud,
         id: 4
-      },
-    ];
-
-  }
-
-  getAllPosts(): Promise<Post[]> {
-    return new Promise((resolve, reject) => {
-      resolve(this.arrayPosts);
-      reject('ha ocurrido un error');
-    })
-  }
-
-  addNewPost(newPost: Post): Promise<string> {
-    return new Promise((resolve, reject) => {
-      this.arrayPosts.push(newPost);
-      resolve(`El Post ${newPost.titulo} se ha agregado!`);
-      reject('Ha ocurrido un error');
-    });
-  }
-
-  getPostByCategory(pCategoria: string): Promise<Post[]> {
-    return new Promise((resolve, reject) => {
-      const filteredList = this.arrayPosts.filter(post => post.categoria === pCategoria);
-      resolve(filteredList);
-      reject('Ha ocuriido un error');
-    })
-  }
-
-  getPostById(pId: number): Promise<Post> {
-    return new Promise((resolve, reject) => {
-      resolve(this.arrayPosts.find(post => post.id === pId));
-      reject('Ha ocurrido un error');
-    })
-  }
-
-  getNewPostId(): Promise<number> {
-    return new Promise((resolve, reject) => {
-      const id = (this.arrayPosts.length + 1);
-      resolve(id);
-    })
-  }
-
-}
+      }, */

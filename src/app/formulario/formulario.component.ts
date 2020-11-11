@@ -12,6 +12,7 @@ export class FormularioComponent implements OnInit {
 
   formulario: FormGroup;
   categorias: Categoria[];
+  postPublicado: string;
 
   constructor(private datosPostsService: DatosPostsService) {
 
@@ -48,10 +49,14 @@ export class FormularioComponent implements OnInit {
     if (!newPost.autor) newPost.autor = 'Anonymous'
     if (!newPost.imagen) newPost.imagen = 'https://quicksprout-wpengine.netdna-ssl.com/wp-content/uploads/2014/08/stockphotography.jpg'
 
+
     newPost.id = await this.datosPostsService.getNewPostId();
     newPost.fecha = new Date();
-    const response = await this.datosPostsService.addNewPost(newPost);
-    console.log(response);
+    this.postPublicado = await this.datosPostsService.addNewPost(newPost);
+    this.formulario.reset()
+    setTimeout(() => {
+      this.postPublicado = null;
+    }, 5000);
 
 
   }

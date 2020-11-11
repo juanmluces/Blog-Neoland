@@ -15,7 +15,7 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched, textarea.ng-invalid.n
   background-color: rgb(255, 227, 227);
 }
 
-input.ng-valid.ng-touched{
+input.ng-valid.ng-touched,select.ng-valid.ng-touched,textarea.ng-valid.ng-touched{
   outline: none;
   border-color: #1AC3C2;
   box-shadow: 0 0 10px #1AC3C2;
