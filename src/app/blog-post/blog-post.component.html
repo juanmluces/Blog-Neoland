@@ -1,18 +1,20 @@
 <h2 class="text-center bg-light mt-5 p-2">{{postMostrado.titulo}}</h2>
-<a class="btn btn-info ml-5 mt-4" routerLink="/blog">Volver</a>
-<div class="post container text-light mt-5">
-  <div class="row p-4">
-    <div class="col-4">
-      <img src="{{postMostrado.imagen}}" alt="">
-    </div>
-    <div class="col-8">
-      <p>{{postMostrado.texto}}</p>
-      <p>
-        <em>~{{postMostrado.autor}}</em>
-      </p>
-      <p>
-        <em>{{postMostrado.fecha}}</em>
-      </p>
+<div class="container">
+  <a class="btn btn-info ml-5 mt-4" routerLink="/blog">Volver</a>
+  <div class="post container text-light mt-5">
+    <div class="row p-4">
+      <div class="col-4">
+        <img src="{{postMostrado.imagen}}" alt="">
+      </div>
+      <div class="col-8">
+        <p>{{postMostrado.texto}}</p>
+        <p>
+          <em>~{{postMostrado.autor}}</em>
+        </p>
+        <p>
+          <em>{{postMostrado.fecha}}</em>
+        </p>
+      </div>
     </div>
   </div>
 </div>
