@@ -33,6 +33,7 @@ img{
 
 }
 
+
 @media(max-width:800px){
  
   .post{
@@ -43,9 +44,11 @@ img{
 .post .background{
   background-color: #222133;
   padding: 2em;
+  height: 100%;
 }
 
 hr{
   border: 0.125em solid #1CC3BC;
   width: 50%;
 }
+

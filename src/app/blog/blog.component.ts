@@ -14,6 +14,7 @@ export class BlogComponent implements OnInit {
   arrayCategorias: Categoria[]
   categoriaMostrada: Categoria;
 
+
   constructor(private datosPostsService: DatosPostsService) {
     this.categoriaMostrada = null;
 
