@@ -8,6 +8,8 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdminComponent } from './admin/admin.component';
+import { AdminEditComponent } from './admin-edit/admin-edit.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     BlogComponent,
     FormularioComponent,
     NavbarComponent,
-    BlogPostComponent
+    BlogPostComponent,
+    AdminComponent,
+    AdminEditComponent
   ],
   imports: [
     BrowserModule,

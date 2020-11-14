@@ -12,6 +12,7 @@ export class BlogPostComponent implements OnInit {
 
   postMostrado: Post;
   postId: number;
+  parrafosPost: string[];
 
   constructor(
     private datosPostsService: DatosPostsService,
@@ -28,8 +29,13 @@ export class BlogPostComponent implements OnInit {
     this.datosPostsService.getPostById(this.postId)
       .then(response => {
         this.postMostrado = response;
+        this.parrafosPost = this.postMostrado.texto.split('\n');
+        console.log(this.parrafosPost);
       })
       .catch(error => console.log(error));
+
   }
+
+
 
 }

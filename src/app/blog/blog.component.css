@@ -28,24 +28,19 @@ img{
   background-color: #1CC3BC;
   padding: 0.5em;
   border-radius: 10px;
-  margin: 1em 1.5%;
-  width: 47%;
+  margin: 1em auto;
+  width: 100%;
+  word-wrap: break-word;
 
 }
 
-
-@media(max-width:800px){
- 
-  .post{
-    width: 100%;
-  }
-}
 
 .post .background{
   background-color: #222133;
   padding: 2em;
   height: 100%;
 }
+
 
 hr{
   border: 0.125em solid #1CC3BC;

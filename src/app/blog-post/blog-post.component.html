@@ -1,20 +1,35 @@
-<h2 class="text-center bg-light mt-5 p-2">{{postMostrado.titulo}}</h2>
 <div class="container">
-  <a class="btn btn-info ml-5 mt-4" routerLink="/blog">Volver</a>
-  <div class="post container text-light mt-5">
+  <div *ngIf="postMostrado">
+    <h2 class="text-center text-light  p-2">{{postMostrado.titulo}}</h2>
+    <hr>
+  </div>
+  <div *ngIf="!postMostrado">
+    <h2 class="text-center text-light  p-2">Aqui no hay nada, escribe algo interesante y
+      vuelve</h2>
+    <hr>
+    <a class="btn btn-info ml-5 mt-4" routerLink="/blog">Volver</a>
+    <div class="img-container">
+      <img
+        src="https://images.pexels.com/photos/3601081/pexels-photo-3601081.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+    </div>
+
+  </div>
+  <div *ngIf="postMostrado" class="post container text-light mt-5">
     <div class="row p-4">
-      <div class="col-4">
-        <img src="{{postMostrado.imagen}}" alt="">
-      </div>
-      <div class="col-8">
-        <p>{{postMostrado.texto}}</p>
-        <p>
-          <em>~{{postMostrado.autor}}</em>
+      <div class="col-lg-4">
+        <img src="{{postMostrado.imagen}}" alt="{{postMostrado.titulo}}">
+        <p class="pt-3"><em>~{{postMostrado.autor}}</em>
         </p>
         <p>
           <em>{{postMostrado.fecha | date:'fullDate'}}</em>
         </p>
+        <a class="btn btn-info ml-5 mt-4" routerLink="/blog">Volver</a>
+      </div>
+      <div class="col-lg-8">
+        <p *ngFor="let parrafo of parrafosPost">{{parrafo}}</p>
       </div>
     </div>
   </div>
 </div>
+
+{{postMostrado.texto |json}}

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminEditComponent } from './admin-edit/admin-edit.component';
+import { AdminComponent } from './admin/admin.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
 import { BlogComponent } from './blog/blog.component';
 import { FormularioComponent } from './formulario/formulario.component';
@@ -9,6 +11,8 @@ const routes: Routes = [
   { path: "blog", component: BlogComponent },
   { path: "blog/:blogId", component: BlogPostComponent },
   { path: "new", component: FormularioComponent },
+  { path: "admin", component: AdminComponent },
+  { path: "admin/:postId", component: AdminEditComponent },
   { path: "**", redirectTo: "/blog" }
 ];
 

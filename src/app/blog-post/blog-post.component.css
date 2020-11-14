@@ -7,4 +7,16 @@ img{
 div.post{
   border: 0.5em solid #1CC3BC;
   border-radius:  15px;
+  word-wrap: break-word;
+}
+
+hr{
+  border: 0.125em solid #1CC3BC;
+  width: 50%;
+}
+
+div.img-container{
+  padding: 20px;
+  width: 50%;
+  margin: auto;
 }

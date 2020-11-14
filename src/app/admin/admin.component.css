@@ -1,0 +1,15 @@
+hr{
+  border: 0.125em solid #1CC3BC;
+  width: 50%;
+}
+
+tbody tr:hover{
+  background-color: #222629;
+}
+
+@media(max-width: 899px){
+  .hide-width{
+    display: none;
+  }
+
+}
