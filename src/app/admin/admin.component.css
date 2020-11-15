@@ -7,6 +7,10 @@ tbody tr:hover{
   background-color: #222629;
 }
 
+button{
+  width: 75px;
+}
+
 @media(max-width: 899px){
   .hide-width{
     display: none;

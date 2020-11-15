@@ -10,6 +10,7 @@ import { BlogPostComponent } from './blog-post/blog-post.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
 import { AdminEditComponent } from './admin-edit/admin-edit.component';
+import { TextFormatPipe } from './text-format.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
     NavbarComponent,
     BlogPostComponent,
     AdminComponent,
-    AdminEditComponent
+    AdminEditComponent,
+    TextFormatPipe
   ],
   imports: [
     BrowserModule,

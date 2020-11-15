@@ -29,8 +29,8 @@ export class BlogPostComponent implements OnInit {
     this.datosPostsService.getPostById(this.postId)
       .then(response => {
         this.postMostrado = response;
-        this.parrafosPost = this.postMostrado.texto.split('\n');
-        console.log(this.parrafosPost);
+        this.parrafosPost = this.postMostrado.texto.split('\n').filter(element => element.trim() != '');
+
       })
       .catch(error => console.log(error));
 

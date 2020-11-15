@@ -1,6 +1,6 @@
 <div class="container-fluid navBar">
   <nav class="container">
-    <ul class="d-flex justify-content-between">
+    <ul class="d-flex flex-wrap justify-content-between">
       <li class="text-light p-2"> <a class="btn btn-info" [ngClass]="{'disabled' : !categoriaMostrada}"
           (click)="filtrarCategoria(false)">Todo</a>
       </li>
@@ -16,14 +16,14 @@
     <div class="background">
       <h5 class="text-center">{{post.titulo}}</h5>
       <hr>
-      <div class="row justify-content-between">
+      <div class="row justify-content-between m-0">
         <div class="imgContainer m-auto col-lg-4 col-md-12">
           <img src="{{post.imagen}}">
-          <p class="mb-0">Categoría: {{post.categoria}}</p>
-          <p>{{post.fecha | date: 'fullDate'}}</p>
+          <p class="mb-0 mt-4">Categoría: {{post.categoria}}</p>
+          <p class="mb-0">{{post.fecha | date: 'fullDate'}}</p>
         </div>
         <div class="col-lg-8 col-md-12">
-          <p class="blog-text">{{post.texto.split(' ').slice(0,75).join(' ')}}...
+          <p class="blog-text">{{post.texto | textFormat: 75:' '}}
           </p>
           <p>~{{post.autor}}</p>
           <button [routerLink]="'/blog/' + post.id" class="btn btn-info">Leer Más</button>

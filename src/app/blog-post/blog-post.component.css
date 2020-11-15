@@ -2,12 +2,18 @@ img{
   width: 100%;
   height: auto;
   display: block;
+  
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 div.post{
-  border: 0.5em solid #1CC3BC;
-  border-radius:  15px;
+  border: 0.125em solid #1CC3BC;
+  border-radius:  10px;
+  padding: 1.5em;
+  margin: 1em auto;
   word-wrap: break-word;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #222133;
 }
 
 hr{
@@ -17,6 +23,10 @@ hr{
 
 div.img-container{
   padding: 20px;
-  width: 50%;
-  margin: auto;
+ 
+}
+
+p.parrafoTexto:first-child{
+  text-indent: 2em;
+
 }

@@ -15,8 +15,8 @@ export class DatosPostsService {
 
   private arrayPosts: Post[];
   private postEdit: Post; // el post que se va a modificar en la seccion de Admin
-  editMode: Boolean; // modo edit activo o desactivo en formulario
-  arrayCategorias: Categoria[]
+  editMode: Boolean; // modo edit activo o desactivado en formulario
+  arrayCategorias: Categoria[] //variable publica para que los demaás componentes pueda acceder al array de categorias
 
 
 
@@ -151,6 +151,7 @@ export class DatosPostsService {
     })
   }
 
+  //busca un post segun el id
   getPostById(pId: number): Promise<Post> {
     return new Promise((resolve, reject) => {
       resolve(this.arrayPosts.find(post => post.id === pId));
@@ -158,6 +159,7 @@ export class DatosPostsService {
     })
   }
 
+  //añade un id al post nuevo
   getNewPostId(): Promise<number> {
     return new Promise((resolve, reject) => {
       const id = (this.arrayPosts.length + 1);
@@ -171,15 +173,16 @@ export class DatosPostsService {
   deletePost(pIndex: number): Promise<string> {
     return new Promise((resolve, reject) => {
       this.arrayPosts.splice(pIndex, 1);
-      // actualizar los id de los post
+      // actualizar los id de los post al borrar un elemento del array
       this.arrayPosts.forEach(post => post.id = (this.arrayPosts.indexOf(post) + 1));
       localStorage.setItem('posts', JSON.stringify(this.arrayPosts))
       resolve('Post Borrado!');
+      reject(error => console.log(error));
     });
   }
 
-  // elegir el post a editar
-  postToEdit(pIndex: number): Promise<string> {
+  // activa el modo editar y selecciona el post a editar
+  activateEditMode(pIndex: number): Promise<string> {
     return new Promise((resolve, reject) => {
       this.postEdit = this.arrayPosts[pIndex];
       this.editMode = true
@@ -192,14 +195,15 @@ export class DatosPostsService {
   getPostEdit(): Promise<Post> {
     return new Promise((resolve, reject) => {
       resolve(this.postEdit);
+      reject(error => console.log(error));
     })
   }
 
 
   // se modifica el post editado en el array
-  modifyPost(pPost: Post): Promise<string> {
+  modifyPost(pPost: Post, pIndex: number): Promise<string> {
     return new Promise((resolve, reject) => {
-      this.arrayPosts.splice((pPost.id - 1), 1, pPost);
+      this.arrayPosts.splice(pIndex, 1, pPost);
       localStorage.setItem('posts', JSON.stringify(this.arrayPosts))
       resolve('Post Modificado')
     })

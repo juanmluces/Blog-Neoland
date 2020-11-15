@@ -20,9 +20,9 @@ export class FormularioComponent implements OnInit {
   constructor(private datosPostsService: DatosPostsService) {
 
     this.categorias = this.datosPostsService.arrayCategorias;
-    this.editMode = this.datosPostsService.editMode;
+    this.editMode = this.datosPostsService.editMode; //verifica si carga el modo edición o el modo normal
 
-
+    //formulario en blanco para el modo normal
     if (!this.editMode) {
 
       this.formulario = new FormGroup({
@@ -45,10 +45,11 @@ export class FormularioComponent implements OnInit {
       });
     } else {
 
+      //Formulario con los datos del post a modificar y el campo autor deshabilitado en modo edición
       this.datosPostsService.getPostEdit().then(resovle => {
-        this.editPost = resovle
+        this.editPost = resovle //recupera el post a editar
 
-        this.editPostIndex = (this.editPost.id - 1);
+        this.editPostIndex = (this.editPost.id - 1); //recupera el Index en el array del post a editar
 
 
         this.formulario = new FormGroup({
@@ -69,8 +70,6 @@ export class FormularioComponent implements OnInit {
           ]),
 
         });
-
-
       });
 
     }
@@ -83,27 +82,35 @@ export class FormularioComponent implements OnInit {
   }
 
   async onSubmit(newPost: Post) {
+    //si el campo de imagen está vacio se aplica la imagen generica
     if (!newPost.imagen) newPost.imagen = 'https://quicksprout-wpengine.netdna-ssl.com/wp-content/uploads/2014/08/stockphotography.jpg'
 
+    //si se encuentra en modo edicion se completan los datos que faltan del formulario, autor, id, fecha.
     if (this.editMode) {
       newPost.autor = this.editPost.autor;
       newPost.id = this.editPostIndex + 1;
       newPost.fecha = this.editPost.fecha;
-      const response = await this.datosPostsService.modifyPost(newPost);
+      //se modifica el post en el servicio
+      const response = await this.datosPostsService.modifyPost(newPost, this.editPostIndex);
       this.postPublicado = response;
+      //se resetea el formulario y se apaga el modo edicion
       this.formulario.reset();
       this.datosPostsService.editMode = false;
 
     } else {
+      //si el campo autor está vacio, se utiliza Anonymous como autor
       if (!newPost.autor) newPost.autor = 'Anonymous'
+      //se genera un uevo id para el post y se le registra la fecha
       newPost.id = await this.datosPostsService.getNewPostId();
       newPost.fecha = new Date();
+      //se agrega el nuevo post al servicio
       this.postPublicado = await this.datosPostsService.addNewPost(newPost);
       this.formulario.reset()
     }
+    //setTimeout para borrar automaticamente la alerta de post guardado
     setTimeout(() => {
       this.postPublicado = null;
-    }, 5000);
+    }, 4000);
 
 
   }

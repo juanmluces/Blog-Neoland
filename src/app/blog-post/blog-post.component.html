@@ -23,13 +23,11 @@
         <p>
           <em>{{postMostrado.fecha | date:'fullDate'}}</em>
         </p>
-        <a class="btn btn-info ml-5 mt-4" routerLink="/blog">Volver</a>
+        <a class="btn btn-info mb-4" routerLink="/blog">Volver</a>
       </div>
       <div class="col-lg-8">
-        <p *ngFor="let parrafo of parrafosPost">{{parrafo}}</p>
+        <p class="parrafoTexto" *ngFor="let parrafo of parrafosPost">{{parrafo}}</p>
       </div>
     </div>
   </div>
 </div>
-
-{{postMostrado.texto |json}}

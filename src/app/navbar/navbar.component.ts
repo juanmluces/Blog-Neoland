@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onClick() {
+    //al navegar se desactiva el modo edicion del formulario
     this.datosPostaService.editMode = false;
   }
 

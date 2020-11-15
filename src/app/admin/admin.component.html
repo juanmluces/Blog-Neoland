@@ -21,18 +21,16 @@
       <tr *ngFor="let post of arrayPosts; let index = index">
         <th scope="row">{{post.id}}</th>
         <td data-toggle="tooltip" data-placement="left" title="{{post.titulo}}">
-          {{post.titulo.split(' ').slice(0,5).join(' ')}}
-        </td>
-        <td class="hide-width" data-toggle="tooltip" data-placement="left"
-          title="{{post.texto.split(' ').slice(0,30).join(' ')}}...">
-          {{post.texto.split(' ').slice(0,5).join(' ')}}...
+          {{post.titulo | textFormat: 5}}
+        <td class="hide-width" data-toggle="tooltip" data-placement="left" title="{{post.texto | textFormat: 30}}...">
+          {{post.texto | textFormat: 5}}
         </td>
         <td class="hide-width" data-toggle="tooltip" data-placement="left" title="{{post.imagen}}">
-          {{post.imagen.split('').slice(0,15).join('')}}
+          {{post.imagen | textFormat: 15:''}}
         </td>
         <td class="hide-width">{{post.fecha | date: 'dd/MM/yyyy'}}</td>
         <td>
-          <button (click)="onClickEdit(index)" [routerLink]="'/new'"
+          <button (click)="onClickEdit(index)" routerLink="/new"
             class="btn btn-sm btn-warning font-weight-bold text-uppercase m-1">Editar</button>
           <button (click)="onClickDelete(index)"
             class="btn btn-sm btn-danger font-weight-bold text-uppercase m-1">borrar</button>
