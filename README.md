@@ -1,4 +1,4 @@
-url: https://app.netlify.com/sites/blog-neoland-jml/overview
+url: https://blog-neoland-jml.netlify.app
 
 
 
